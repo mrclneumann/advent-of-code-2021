@@ -1,11 +1,8 @@
 import pytest
 
-from aoc.day_01 import part_01, part_02
+from aoc.day_01 import part_one, part_two, read_puzzle
 
-
-@pytest.fixture
-def report():
-    f = """
+lines = """
 199
 200
 208
@@ -18,12 +15,20 @@ def report():
 263
 """
 
-    return [row.strip() for row in f.split()]
+
+@pytest.fixture
+def puzzle():
+    return lines.strip().split("\n")
 
 
-def test_part_01(report):
-    assert part_01(report) == 7
+@pytest.fixture
+def report(puzzle):
+    return read_puzzle(puzzle)
 
 
-def test_part_02(report):
-    assert part_02(report) == 5
+def test_part_one(report):
+    assert part_one(report) == 7
+
+
+def test_part_two(report):
+    assert part_two(report) == 5
