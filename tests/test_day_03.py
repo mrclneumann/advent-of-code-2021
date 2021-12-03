@@ -1,18 +1,20 @@
 import pytest
 
-from advent.day_01 import part_one, part_two, read_puzzle
+from advent.day_03 import part_one, part_two, read_puzzle
 
 lines = """
-199
-200
-208
-210
-200
-207
-240
-269
-260
-263
+00100
+11110
+10110
+10111
+10101
+01111
+00111
+11100
+10000
+11001
+00010
+01010
 """
 
 
@@ -27,8 +29,8 @@ def report(puzzle):
 
 
 def test_part_one(report):
-    assert part_one(report) == 7
+    assert part_one(report) == 198
 
 
 def test_part_two(report):
-    assert part_two(report) == 5
+    assert part_two(report) == 230

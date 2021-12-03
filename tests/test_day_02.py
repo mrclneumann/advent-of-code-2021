@@ -1,6 +1,6 @@
 import pytest
 
-from aoc.day_02 import part_one, part_two, read_puzzle
+from advent.day_02 import part_one, part_two, read_puzzle
 
 lines = """
 forward 5
