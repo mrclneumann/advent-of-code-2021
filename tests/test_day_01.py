@@ -17,18 +17,26 @@ lines = """
 
 
 @pytest.fixture
-def puzzle():
+def small_puzzle():
     return lines.strip().split("\n")
 
 
 @pytest.fixture
-def report(puzzle):
-    return read_puzzle(puzzle)
+def report(small_puzzle):
+    return read_puzzle(small_puzzle)
 
 
-def test_part_one(report):
+@pytest.fixture
+def puzzle():
+    with open("../inputs/input_day_01.txt") as f:
+        return read_puzzle(f.readlines())
+
+
+def test_small_puzzle(report):
     assert part_one(report) == 7
-
-
-def test_part_two(report):
     assert part_two(report) == 5
+
+
+def test_solution(puzzle):
+    assert part_one(puzzle) == 1228
+    assert part_two(puzzle) == 1257

@@ -13,18 +13,26 @@ forward 2
 
 
 @pytest.fixture
-def puzzle():
+def small_puzzle():
     return lines.strip().split("\n")
 
 
 @pytest.fixture
-def instructions(puzzle):
-    return read_puzzle(puzzle)
+def instructions(small_puzzle):
+    return read_puzzle(small_puzzle)
 
 
-def test_part_one(instructions):
+@pytest.fixture
+def puzzle():
+    with open("../inputs/input_day_02.txt") as f:
+        return read_puzzle(f.readlines())
+
+
+def test_small_puzzle(instructions):
     assert part_one(instructions) == 150
-
-
-def test_part_two(instructions):
     assert part_two(instructions) == 900
+
+
+def test_solution(puzzle):
+    assert part_one(puzzle) == 2272262
+    assert part_two(puzzle) == 2134882034
