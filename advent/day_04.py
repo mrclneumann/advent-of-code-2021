@@ -83,9 +83,9 @@ def read_puzzle(lines: list[str]) -> Bingo:
     return Bingo(numbers, boards)
 
 
-def chunks(lines: list, n: int):
-    for i in range(0, len(lines), n):
-        yield lines[i : i + n]
+def chunks(lines: list, size: int):
+    for i in range(0, len(lines), size):
+        yield lines[i : i + size]
 
 
 if __name__ == "__main__":
