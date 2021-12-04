@@ -27,9 +27,9 @@ def co2_scrubber_rating(df: pd.DataFrame) -> int:
     return select_by_bit_criteria(df, least_common)
 
 
-def select_by_bit_criteria(df: pd.DataFrame, f: Callable[[pd.Series], int]):
-    for col in range(len(df.columns)):
-        df = df[df.iloc[:, col] == f(df.iloc[:, col])]
+def select_by_bit_criteria(df: pd.DataFrame, criteria: Callable[[pd.Series], int]):
+    for col in df.columns:
+        df = df[df.loc[:, col] == criteria(df[col])]
 
     return bits_to_int(df.iloc[0])
 
