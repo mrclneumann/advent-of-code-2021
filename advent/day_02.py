@@ -8,13 +8,13 @@ class Submarine:
         self.horizontal_position: int = 0
         self.depth: int = 0
 
-    def forward(self, units: int):
+    def forward(self, units: int) -> None:
         self.horizontal_position += units
 
-    def down(self, units: int):
+    def down(self, units: int) -> None:
         self.depth += units
 
-    def up(self, units: int):
+    def up(self, units: int) -> None:
         self.depth -= units
 
 
@@ -23,14 +23,14 @@ class AimSubmarine(Submarine):
         super().__init__()
         self.aim = 0
 
-    def forward(self, units: int):
+    def forward(self, units: int) -> None:
         super(AimSubmarine, self).forward(units)
         self.depth += self.aim * units
 
-    def down(self, units: int):
+    def down(self, units: int) -> None:
         self.aim += units
 
-    def up(self, units: int):
+    def up(self, units: int) -> None:
         self.aim -= units
 
 
