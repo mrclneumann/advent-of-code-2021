@@ -13,25 +13,11 @@ def points(line: Line) -> Iterable[Point]:
     a: Point
     b: Point
 
-    a, b = (
-        (
-            line.a,
-            line.b,
-        )
-        if line.a < line.b
-        else (line.b, line.a)
-    )
+    a, b = line
 
-    for i in range(np.subtract(b, a).max() + 1):
-        if horizontal(line):
-            dx = 1
-            dy = 0
-        elif vertical(line):
-            dx = 0
-            dy = 1
-        else:
-            dx = 1
-            dy = 1 if a.y < b.y else -1
+    for i in range(max(abs(np.subtract(b, a))) + 1):
+        dx = 1 if a.x < b.x else (-1 if a.x > b.x else 0)
+        dy = 1 if a.y < b.y else (-1 if a.y > b.y else 0)
 
         yield a.x + i * dx, a.y + i * dy
 
@@ -42,10 +28,6 @@ def vertical(line: Line) -> bool:
 
 def horizontal(line: Line) -> bool:
     return line.a.y == line.b.y
-
-
-def diagonal(line: Line) -> bool:
-    return not (vertical(line) or horizontal(line))
 
 
 def part_one(lines: list[Line]) -> int:
