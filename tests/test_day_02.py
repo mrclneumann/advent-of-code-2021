@@ -14,12 +14,7 @@ forward 2
 
 @pytest.fixture
 def small_puzzle():
-    return lines.strip().split("\n")
-
-
-@pytest.fixture
-def instructions(small_puzzle):
-    return read_puzzle(small_puzzle)
+    return read_puzzle(lines.strip().split("\n"))
 
 
 @pytest.fixture
@@ -28,9 +23,9 @@ def puzzle():
         return read_puzzle(f.readlines())
 
 
-def test_small_puzzle(instructions):
-    assert part_one(instructions) == 150
-    assert part_two(instructions) == 900
+def test_small_puzzle(small_puzzle):
+    assert part_one(small_puzzle) == 150
+    assert part_two(small_puzzle) == 900
 
 
 def test_solution(puzzle):

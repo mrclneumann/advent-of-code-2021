@@ -18,12 +18,7 @@ lines = """
 
 @pytest.fixture
 def small_puzzle():
-    return lines.strip().split("\n")
-
-
-@pytest.fixture
-def report(small_puzzle):
-    return read_puzzle(small_puzzle)
+    return read_puzzle(lines.strip().split("\n"))
 
 
 @pytest.fixture
@@ -32,9 +27,9 @@ def puzzle():
         return read_puzzle(f.readlines())
 
 
-def test_small_puzzle(report):
-    assert part_one(report) == 7
-    assert part_two(report) == 5
+def test_small_puzzle(small_puzzle):
+    assert part_one(small_puzzle) == 7
+    assert part_two(small_puzzle) == 5
 
 
 def test_solution(puzzle):

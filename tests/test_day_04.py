@@ -27,12 +27,7 @@ lines = """
 
 @pytest.fixture
 def small_puzzle():
-    return lines.strip().split("\n")
-
-
-@pytest.fixture
-def bingo(small_puzzle):
-    return read_puzzle(small_puzzle)
+    return read_puzzle(lines.strip().split("\n"))
 
 
 @pytest.fixture
@@ -41,9 +36,9 @@ def puzzle():
         return read_puzzle(f.readlines())
 
 
-def test_small_puzzle(bingo):
-    assert part_one(bingo) == 4512
-    assert part_two(bingo) == 1924
+def test_small_puzzle(small_puzzle):
+    assert part_one(small_puzzle) == 4512
+    assert part_two(small_puzzle) == 1924
 
 
 def test_solution(puzzle):
