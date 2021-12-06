@@ -19,7 +19,7 @@ def points(line: Line) -> Iterable[Point]:
         dx = 1 if a.x < b.x else (-1 if a.x > b.x else 0)
         dy = 1 if a.y < b.y else (-1 if a.y > b.y else 0)
 
-        yield a.x + i * dx, a.y + i * dy
+        yield Point(a.x + i * dx, a.y + i * dy)
 
 
 def vertical(line: Line) -> bool:
@@ -42,7 +42,7 @@ def part_two(lines: list[Line]) -> int:
     return count_overlap(chain.from_iterable(points(line) for line in lines))
 
 
-def count_overlap(lines: Iterable[Line]) -> int:
+def count_overlap(lines: Iterable[Point]) -> int:
     return len([v for v in Counter(lines).values() if v > 1])
 
 
